@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Varela Round', sans-serif;
+}
+
+body {
+  background: #f8f9fa;
+  color: #222;
+  transition: all 0.4s ease;
+}
+
+header {
+  background: linear-gradient(90deg, #e66465, #9198e5);
+  padding: 15px 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 20px;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Keep Home + Tips aligned left */
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+/* Push Dark Mode button to right */
+header nav .right {
+  margin-left: auto;
+}
+
+header nav ul li a,
+header nav ul li button {
+  text-decoration: none;
+  color: white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+header nav ul li a.active {
+  font-weight: bold;
+  border-bottom: 2px solid white;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 40px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card img {
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #e66465, #9198e5);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Dark Mode */
+body.dark {
+  background: #1e1e2e;
+  color: #ddd;
+}
+
+body.dark .card {
+  background: #2c2c3e;
+  color: #fff;
+}
+
+body.dark header {
+  background: linear-gradient(90deg, #222, #444);
+}
+.page-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* fills the viewport vertically */
+  text-align: center;
+  padding: 20px;
+}
+
+.page-content h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.page-content p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.page-box {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 500px;
+  width: 100%;
+}
+
+body.dark .page-box {
+  background: #2c2c3e;
+  color: #fff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Center the main content */
+main.tips-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;  /* so list aligns neatly */
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Optional: make nav look neat */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+nav ul li {
+  display: inline;
+}

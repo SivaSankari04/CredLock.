@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+  <h1>Password Manager Tools</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tips.html">Tips</a></li>
+    <li><a href="passgenerator.html" class="active">Password Generator</a></li>
+    <li><a href="passchecker.html">Strength Checker</a></li>
+    <li>
+      <button id="theme-toggle">🌙 Dark Mode</button>
+    </li>
+  </ul>
+</nav>
+  </header>
+
+  <main class="page-content">
+    <div class="page-box">
+      <h2> Secure Password Generator</h2>
+      <p>Generate strong and secure random passwords.</p>
+      
+      <label for="length">Password Length:</label>
+      <input type="number" id="length" value="12" min="8" max="32" class="input-box">
+      
+      <button class="btn" onclick="generatePassword()">Generate Password</button>
+      <p id="result" style="margin-top:20px; font-weight:bold; font-size:20px;"></p>
+    </div>
+  </main>
+
+  <script>
+  function generatePassword() {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+    const length = parseInt(document.getElementById("length").value);
+    const resultBox = document.getElementById("result");
+
+    // Validate length
+    if (isNaN(length) || length < 8 || length > 32) {
+      resultBox.style.color = "red";
+      resultBox.innerText = "Please choose a length between 8 and 32.";
+      return;
+    }
+
+    let password = "";
+    const array = new Uint32Array(length);
+    window.crypto.getRandomValues(array);
+
+    for (let i = 0; i < length; i++) {
+      password += chars[array[i] % chars.length];
+    }
+
+    resultBox.style.color = "green";
+    resultBox.innerText = password;
+  }
+</script>
+  <script>
+  const toggleBtn = document.getElementById("theme-toggle");
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    toggleBtn.textContent = " 🔆Light Mode";
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+      toggleBtn.textContent = "🔆 Light Mode";
+    } else {
+      localStorage.setItem("theme", "light");
+      toggleBtn.textContent = "🌙 Dark Mode";
+    }
+  });
+</script>
+</body>
+</html>

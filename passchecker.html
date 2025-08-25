@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Strength Checker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>CredLock</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tips.html">Tips</a></li>
+        <li><a href="passgenerator.html">Password Generator</a></li>
+        <li><button id="theme-toggle">🌙 Dark Mode</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-content">
+    <div class="page-box">
+      <h2>Password Strength Checker</h2>
+      <p>Test your password’s strength instantly.</p>
+      <input type="text" id="password" placeholder="Enter your password" class="input-box">
+      <button class="btn" onclick="checkStrength()">Check Strength</button>
+      <p id="strength" style="margin-top:20px; font-weight:bold; font-size:20px;"></p>
+    </div>
+  </main>
+   
+  <script>
+    function checkStrength() {
+      const pwd = document.getElementById("password").value;
+      let strength = "Weak!";
+
+      if (pwd.length >= 12 && /[A-Z]/.test(pwd) && /[a-z]/.test(pwd) && /[0-9]/.test(pwd) && /[^A-Za-z0-9]/.test(pwd)) {
+  strength = "Very Strong!";
+        } 
+      else if (pwd.length >= 8 && ((/[A-Z]/.test(pwd) && /[a-z]/.test(pwd)) || (/[0-9]/.test(pwd) && /[^A-Za-z0-9]/.test(pwd)))) {
+  strength = "Strong!";
+} 
+      else if (pwd.length >= 6) {
+  strength = "Medium!";
+} 
+      else {
+  strength = "Weak!";
+}
+      document.getElementById("strength").innerText = "Result: " + strength;
+    }
+  </script>
+    <script>
+  const toggleBtn = document.getElementById("theme-toggle");
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    toggleBtn.textContent = " 🔆Light Mode";
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+      toggleBtn.textContent = "🔆 Light Mode";
+    } else {
+      localStorage.setItem("theme", "light");
+      toggleBtn.textContent = "🌙 Dark Mode";
+    }
+  });
+</script>
+</body>
+</html>
